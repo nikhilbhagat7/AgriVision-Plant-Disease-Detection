@@ -64,32 +64,34 @@ with torch.no_grad():
         all_labels.extend(labels.cpu().numpy())
 
 # # 1. Accuracy
-# accuracy = accuracy_score(all_labels, all_preds)
-# print("\nAccuracy:", round(accuracy, 4))
+accuracy = accuracy_score(all_labels, all_preds)
+print("\nAccuracy:", round(accuracy, 4))
 
 
-# # 2. Precision, Recall, F1-score
-# report = classification_report(all_labels, all_preds, target_names=class_names)
-# print("\nClassification Report:")
-# print(report)
+# 2. Precision, Recall, F1-score
+report = classification_report(all_labels, all_preds, target_names=class_names)
+print("\nClassification Report:")
+print(report)
 
 # CONFUSION MATRIX
 cm = confusion_matrix(all_labels, all_preds)
 
-plt.figure(figsize=(10, 10))
+plt.figure(figsize=(14, 12))
 
 sns.heatmap(
     cm,
-    annot=False,        # turn to True if small classes
+    annot=False,
     fmt='d',
     cmap='Blues',
     xticklabels=class_names,
     yticklabels=class_names
 )
 
+plt.xticks(rotation=90, fontsize=6)
+plt.yticks(fontsize=6)
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
 plt.title("Confusion Matrix")
-
-plt.savefig("confusion_matrix.png")
+plt.tight_layout()
+plt.savefig("confusion_matrix.png", bbox_inches='tight')
 plt.show()
