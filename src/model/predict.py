@@ -7,10 +7,7 @@ from src.model.labels import LABELS, LABEL_TO_NAME
 from src.model.disease_info import DISEASE_INFO
 from pathlib import Path
 
-if torch.cuda.is_available():
-  device='cuda'
-else:
-  device='cpu'
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 CLASS_LABELS = LABELS 
 NUM_CLASSES = len(CLASS_LABELS)

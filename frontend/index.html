@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriVision — Plant Disease Detection</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="main">
+
+    <!-- top bar -->
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">🌿 AgriVision</div>
+        <div class="topbar-subtitle">Disease Detection</div>
+      </div>
+      <div class="badge">38 classes</div>
+    </div>
+
+    <div class="content">
+
+      <!-- error -->
+      <div class="error-msg" id="errorMsg">
+        <span>⚠️</span>
+        <span id="errorText">Something went wrong</span>
+      </div>
+
+      <!-- upload -->
+      <div class="upload-section">
+
+        <div class="upload-card" id="dropZone">
+          <div class="upload-icon">📷</div>
+          <div class="upload-title">Upload a leaf image</div>
+          <div class="upload-hint">Drag & drop or click to upload</div>
+
+          <button type="button" class="upload-btn" id="uploadBtn">
+            Browse
+          </button>
+
+          <input type="file" id="fileInput" accept="image/*" />
+        </div>
+
+        <div class="preview-card hidden" id="previewCard">
+          <div class="preview-header">
+            <span>Preview</span>
+            <button type="button" class="reset-btn" id="resetBtn">Reset</button>
+          </div>
+
+          <div class="preview-img-wrap">
+            <img id="previewImg" src="" alt="Preview" />
+          </div>
+
+          <div class="preview-filename" id="previewFilename"></div>
+        </div>
+
+      </div>
+
+      <!-- analyze -->
+      <div class="analyze-wrap">
+        <button type="button" class="analyze-btn" id="analyzeBtn" disabled>
+          <span id="analyzeBtnText">Analyze</span>
+        </button>
+      </div>
+
+      <!-- result -->
+      <div class="result-section" id="resultSection">
+        <div class="result-card">
+
+          <div class="result-header">
+            <div class="result-header-left">
+              <div id="diagIcon">🦠</div>
+              <div>
+                <div id="resultDiseaseName">—</div>
+              </div>
+            </div>
+
+            <div>
+              <div id="confidenceValue">—</div>
+              <div>Confidence</div>
+              <div class="confidence-bar-wrap">
+                <div id="confidenceBar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-body">
+            <div class="info-block">
+              <div>Cause</div>
+              <div id="resultCause">—</div>
+            </div>
+
+            <div class="info-block">
+              <div>Treatment</div>
+              <div id="resultCure">—</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- table -->
+      <div class="disease-table-section">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-title">Available Classes</div>
+            <div class="section-count">38</div>
+          </div>
+
+          <input
+            type="text"
+            id="diseaseSearch"
+            class="search-box"
+            placeholder="Search..."
+          />
+        </div>
+
+        <div class="disease-table-wrap">
+          <table class="disease-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Crop</th>
+                <th>Disease</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="diseaseTableBody"></tbody>
+          </table>
+
+          <div class="no-results" id="noResults">
+            No results
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>GitHub → </span>
+    <a href="https://github.com/nikhilbhagat7/AgriVision-Plant-Disease-Detection" target="_blank">
+      AgriVision
+    </a>
+  </footer>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
